@@ -9,12 +9,16 @@
     <h2 id="err"></h2>
     <h2 id="alpha"></h2>
     <script>
-      window.addEventListener(
-        "devicemotion",
-        (e) =>
-          // console.log(e.accelerationIncludingGravity.x)
-          (window.alpha.innerText = e.accelerationIncludingGravity.x)
-      );
+      if (window.DeviceOrientationEvent) {
+        // window.alpha.innerText = "YES!";
+        window.addEventListener(
+          "deviceorientation",
+          (event) => {
+            window.alpha.innerText = "ss";
+          },
+          false
+        );
+      }
 
       navigator.geolocation.getCurrentPosition(
         (succ) => {
