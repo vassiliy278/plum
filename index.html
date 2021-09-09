@@ -9,26 +9,27 @@
     <h2 id="err"></h2>
     <h2 id="alpha"></h2>
     <script>
-      window.ondeviceorientation = (e) => {
-        window.alpha.innerText = e.alpha;
-      };
-      window.onde;
-      console.log(
-        navigator.geolocation.getCurrentPosition(
-          (succ) => {
-            console.log(succ.coords.latitude);
-            window.lat.innerText = succ.coords.latitude;
-            console.log(succ.coords.longitude);
-            window.long.innerText = succ.coords.longitude;
-            // window.open(
-            //   `https://www.google.com/maps/search/?api=1&query=${succ.coords.latitude}%2C${succ.coords.longitude}`
-            // );
-          },
-          (err) => {
-            console.warn(err);
-            window.err.innerText = err.message;
-          }
-        )
+      window.addEventListener(
+        "devicemotion",
+        (e) =>
+          // console.log(e.accelerationIncludingGravity.x)
+          (window.alpha.innerText = e.accelerationIncludingGravity.x)
+      );
+
+      navigator.geolocation.getCurrentPosition(
+        (succ) => {
+          console.log(succ.coords.latitude);
+          window.lat.innerText = succ.coords.latitude;
+          console.log(succ.coords.longitude);
+          window.long.innerText = succ.coords.longitude;
+          // window.open(
+          //   `https://www.google.com/maps/search/?api=1&query=${succ.coords.latitude}%2C${succ.coords.longitude}`
+          // );
+        },
+        (err) => {
+          console.warn(err);
+          window.err.innerText = err.message;
+        }
       );
     </script>
     <script src="./test.js"></script>
