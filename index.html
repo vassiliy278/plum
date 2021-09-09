@@ -7,7 +7,12 @@
     <h2 id="lat"></h2>
     <h2 id="long"></h2>
     <h2 id="err"></h2>
+    <h2 id="alpha"></h2>
     <script>
+      window.ondeviceorientation = (e) => {
+        window.alpha.innerText = e.alpha;
+      };
+      window.onde;
       console.log(
         navigator.geolocation.getCurrentPosition(
           (succ) => {
